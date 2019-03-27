@@ -108,4 +108,3 @@ $(".end-game-btn").on('click', (e) => {
   domUpdates.toggleStartModal();
 });
 
-// TODO End game Modal
