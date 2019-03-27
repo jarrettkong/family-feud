@@ -102,4 +102,9 @@ $(".continue-btn").on('click', (e) => {
   }, 30000);
 });
 
+$('end-game-btn').on('click', () => {
+  domUpdates.toggleEndGameModal();
+  domUpdates.toggleStartModal();
+})
+
 // TODO End game Modal
