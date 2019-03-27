@@ -115,6 +115,12 @@ export default {
       value = 'Final Round';
     }
     $('.current-round-text').text(value);
+  },
+
+  highlightCurrentPlayer({ name }) {
+    if (name === $('.player-one.name').text()) {
+      
+    }
   }
 
 }
