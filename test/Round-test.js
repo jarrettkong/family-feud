@@ -21,7 +21,7 @@ describe('Round', () => {
   });
 
   it('should be able to instantiate a new round', () => {
-    let round = new Round(0 , {});
+    let round = new Round({});
     assert.instanceOf(round, Round);
   });
 
@@ -47,7 +47,7 @@ describe('Round', () => {
 
   it('should change isFinished to true when entire response array is filtered', () => {
     let round = new Round({});
-    let player = new Player('Brennan');
+    let player = new Player();
     round.responses = [{answer:'Watch'}];
     round.submitGuess(player, 'watch');
     assert.equal(round.isFinished, true);
