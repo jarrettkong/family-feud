@@ -48,16 +48,4 @@ describe('Player', () => {
     player.updateScore(35);
     assert.equal(player.score, 60);
   });
-
-
-  // // ! maybe belongs in Game
-  // it('should be able to update its score', () => {
-  //   const player = new Player('Brennan');
-  //   player.updateScore(10);
-  //   assert.equal(player.score, 10);
-  // })
-
-  // should have getScore
-  // should have updateScore
-
 });

@@ -197,17 +197,4 @@ describe('Game', () => {
     let winner = game.getWinner();
     assert(winner, 'Draw');
   });
-
-
-
-
-
-  // should have round counter, nun, default 0 or 1
-  // should have players, array, call createPlayers
-  // should createPlayers, return [] of Players
-  // should check guess 
-  // should have startGame
-  // should have nextRound
-  // should have getWinner  
-
 });
