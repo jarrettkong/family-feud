@@ -31,6 +31,7 @@
               <p class="response-text">response</p>
               <p class="respondents">00</p>
             </article>
+            </div>
           </div>
           <div class="response-container">
             <article class="response-card">
@@ -60,7 +61,7 @@
     </section>
   </div>
 
-  <dialog class="start-game-modal modal">
+  <dialog aria-modal="true" class="start-game-modal modal">
     <div class="modal-display-area">
       <h2 class="modal-header">Greetings</h2>
       <p class="modal-text">Welcome to Family Feud! There will be 2 normal rounds, and 1 lightning round. Player 1 will
@@ -102,7 +103,7 @@
     </div>
   </dialog>
 
-  <dialog class="lightning-round-modal modal">
+  <dialog aria-modal="true" class="lightning-round-modal modal">
     <div class="modal-display-area">
       <h3 class="modal-header"> Round 3</h3>
       <p class="modal-text"><em>Entering Lightning Round:</em> Each player will be given 30 seconds to enter as many
@@ -125,7 +126,7 @@
     </div>
   </dialog>
 
-  <dialog class="switch-player-modal modal">
+  <dialog aria-modal="true" class="switch-player-modal modal">
     <div class="modal-display-area">
       <h3 class="modal-header">Switch Players</h3>
       <p class="modal-text">Please switch players and press <span class="modal-btn-name">Continue Round</span> to begin.
@@ -145,26 +146,25 @@
     </div>
   </dialog>
 
-  <dialog class="end-game-modal modal">
-    <div class="modal-display-area">
-      <h3 class="modal-header">Game Over</h3>
-      <p class="modal-text">Thank you for playing! If you would like to start a new came, click <span
-          class="modal-btn-name">New Game</span> to begin!</p>
-      <h5 class="modal-current-standings">Results</h5>
-      <section class="modal-result-container">
-        <div class="modal-results p1-winner">
-          <h6 class="player-one-name-modal modal-results-name">Player 1</h6>
-          <p span class="player-one-score-modal modal-results-score">0</p>
-        </div>
-        <div class="modal-results p2-winner">
-          <h6 class="player-two-name-modal modal-results-name">Player 2</h6>
-          <p class="player-two-score-modal modal-results-score">0</p>
-        </div>
-      </section>
-      <button class="end-game-btn modal-btn">New Game</button>
-    </div>
-  </dialog>
-
+  <dialog aria-modal="true" class="end-game-modal modal">
+      <div class="modal-display-area">
+        <h3 class="modal-header">Game Over</h3>
+        <p class="modal-text">Thank you for playing! If you would like to start a new came, click <span class="modal-btn-name">New Game</span> to begin!</p>
+        <h5 class="modal-current-standings">Results</h5>
+        <section class="modal-result-container">
+            <div class="modal-results p1-winner">
+              <h6 class="player-one-name-modal modal-results-name">Player 1</h6>
+              <p span class="player-one-score-modal modal-results-score">0</p>
+            </div>
+            <div class="modal-results p2-winner">
+              <h6 class="player-two-name-modal modal-results-name">Player 2</h6>
+              <p class="player-two-score-modal modal-results-score">0</p>
+            </div>
+          </section>
+        <button class="end-game-btn modal-btn">New Game</button>
+      </div>
+    </dialog>
+  
   <div id="player-2" class="player-info">
     <h3 class="player-two-name player-name">Player 2</h3>
     <p><span class="player-two-display-score player-score">0</span></p>
