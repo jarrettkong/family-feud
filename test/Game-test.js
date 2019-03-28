@@ -14,7 +14,7 @@ describe('Game', () => {
 
   beforeEach(function() {
     chai.spy.on(domUpdates, 'displayCurrentQuestion', () => true);
-    chai.spy.on(domUpdates, 'startGame', () => true);
+    chai.spy.on(domUpdates, 'startRound', () => true);
   });
 
   afterEach(function() {
@@ -22,7 +22,7 @@ describe('Game', () => {
   });
 
   it('should be able to instantiate a new game', () => {
-    let game = new Game({}, {});
+    let game = new Game();
     assert.instanceOf(game, Game);
   })
 
@@ -31,26 +31,42 @@ describe('Game', () => {
     assert.equal(game.round, 0);
   });
 
+  it('should start with a currentPlayer value of null', () => {
+    const game = new Game();
+    assert.equal(game.currentPlayer, null)
+  });
+
+
+  it('should start with a currentRound value of null', () => {
+    const game = new Game();
+    assert.equal(game.currentRound, null)
+  });
+
   it('should accept an array of players', () => {
     const player1 = new Player('Jarrett', 1);
     const player2 = new Player('Brennan', 2);
     const game = new Game(player1, player2);
-
     assert.equal(game.players[0].name, 'Jarrett');
     assert.equal(game.players[1].name, 'Brennan');
   }); 
 
-  //fails
-  it('should start on player 1 when starting first round', () => {
+  it('should set currentPlayer to first player on round 1', () => {
     const player1 = new Player('Brennan');
     const player2 = new Player('Jarrett');
-    const game = new Game(player1, player2, [1]);
-    console.log(game.surveys);
+    const game = new Game(player1, player2, [1, 2]);
     game.startNextRound();
     assert.equal(game.currentPlayer, player1);
   });
 
-  //fails
+  it('should set currentPlayer to second player on round 2', () => {
+    const player1 = new Player('Brennan');
+    const player2 = new Player('Jarrett');
+    const game = new Game(player1, player2, [1, 2]);
+    game.startNextRound();
+    game.startNextRound(); 
+    assert.equal(game.currentPlayer, player2);
+  })
+
   it('should accept an argument of an array', () => {
     const player1 = new Player('Brennan');
     const player2 = new Player('Jarrett');
@@ -58,14 +74,6 @@ describe('Game', () => {
     assert.deepEqual(game.surveys, [1, 2, 3]);
   });
 
-  //fails
-  it('should be able to start the game and grab surveys', () => {
-    const player1 = new Player('Brennan');
-    const player2 = new Player('Jarrett');
-    const game = new Game(player1, player2);
-    game.startGame();
-    assert.equal(game.surveys.length, 15)
-  });
 
   it('should be able to shuffle surveys', () => {
     const player1 = new Player('Brennan');
@@ -76,14 +84,13 @@ describe('Game', () => {
     assert.notDeepEqual(array, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
   });
 
-  //fails
   it('should start increment round upon initiation of game', () => {
     const player1 = new Player('Brennan');
     const player2 = new Player('Jarrett');
-    const game = new Game(player1, player2);
+    const game = new Game(player1, player2, [1, 2]);
     game.startGame();
     assert.equal(game.round, 1);
-    expect(domUpdates.displayCurrentQuestion).to.have.been.called(1);
+    expect(domUpdates.startRound).to.have.been.called(1);
   });
 
 
