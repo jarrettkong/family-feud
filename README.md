@@ -23,6 +23,8 @@ Run `npm start` in your terminal. Go to `http://localhost:8080/` and you should 
 ## Screenshots
 
 
+
+
 ## Emphasis of the Project
 
 Further knowledge on the following technologies/principles:
@@ -36,5 +38,12 @@ Further knowledge on the following technologies/principles:
 
 ## Contributors/Roles and Responsibilities
 
+While most work was done in tandem Jarrett's focus was mostly on class hierarchy and game logic, and Brennan's focus was mostly on the testing portion of the code.
+
 
 ## Known Issues
+
+- Names are not required inputs.
+- Screen readers can see answers.
+- Cannot hit enter to trigger modal button.
+- Sometimes modals can be dismissed with clicks.
