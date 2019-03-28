@@ -24,31 +24,31 @@
         </article>
         <section id="response-area">
           <div class="response-container">
-            <div class="response-card">
+            <article class="response-card">
               <h4>1</h4>
-            </div>
-            <div class="revealed-response">
+            </article>
+            <article class="revealed-response">
               <p class="response-text">response</p>
               <p class="respondents">00</p>
-            </div>
+            </article>
           </div>
           <div class="response-container">
-            <div class="response-card">
+            <article class="response-card">
               <h4>2</h4>
-            </div>
-            <div class="revealed-response">
+            </article>
+            <article class="revealed-response">
               <p class="response-text">response</p>
               <p class="respondents">00</p>
-            </div>
+            </article>
           </div>
           <div class="response-container">
-            <div class="response-card">
+            <article class="response-card">
               <h4>3</h4>
-            </div>
-            <div class="revealed-response">
+            </article>
+            <article class="revealed-response">
               <p class="response-text">response</p>
               <p class="respondents">00</p>
-            </div>
+            </article>
           </div>
         </section>
         <form class="main-form">
@@ -63,8 +63,9 @@
   <dialog class="start-game-modal modal">
     <div class="modal-display-area">
       <h2 class="modal-header">Greetings</h2>
-      <p class="modal-text">Welcome to Family Feud! There will be 2 normal rounds, and 1 lightning round. Player 1 will start, and will keep guessing until either an incorrect guess is entered, or the round ends. Enter your names and press <span
-          class="modal-btn-name">Start Game</span> to play!</p>
+      <p class="modal-text">Welcome to Family Feud! There will be 2 normal rounds, and 1 lightning round. Player 1 will
+        start, and will keep guessing until either an incorrect guess is entered, or the round ends. Enter your names
+        and press <span class="modal-btn-name">Start Game</span> to play!</p>
       <form class="start-game-form">
         <div class="name-form-container">
           <label for="player-one-input">Player 1 Name</label>
@@ -104,7 +105,10 @@
   <dialog class="lightning-round-modal modal">
     <div class="modal-display-area">
       <h3 class="modal-header"> Round 3</h3>
-      <p class="modal-text"><em>Entering Lightning Round:</em> Each player will be given 30 seconds to enter as many responses to a survey as they can after pressing continue. Every inorrect response will decrease your score by 20 points. Points are doubled for this round. The player with the lower score will start. Press <span class="modal-btn-name">Start Lightning Round</span> to continue.
+      <p class="modal-text"><em>Entering Lightning Round:</em> Each player will be given 30 seconds to enter as many
+        responses to a survey as they can after pressing continue. Every inorrect response will decrease your score by
+        20 points. Points are doubled for this round. The player with the lower score will start. Press <span
+          class="modal-btn-name">Start Lightning Round</span> to continue.
       </p>
       <h5 class="modal-current-standings">Current Standings</h5>
       <section class="modal-result-container">
@@ -124,7 +128,8 @@
   <dialog class="switch-player-modal modal">
     <div class="modal-display-area">
       <h3 class="modal-header">Switch Players</h3>
-      <p class="modal-text">Please switch players and press <span class="modal-btn-name">Continue Round</span> to begin.</p>
+      <p class="modal-text">Please switch players and press <span class="modal-btn-name">Continue Round</span> to begin.
+      </p>
       <h5 class="modal-current-standings">Current Standings</h5>
       <section class="modal-result-container">
         <div class="modal-results">
@@ -141,24 +146,25 @@
   </dialog>
 
   <dialog class="end-game-modal modal">
-      <div class="modal-display-area">
-        <h3 class="modal-header">Game Over</h3>
-        <p class="modal-text">Thank you for playing! If you would like to start a new came, click <span class="modal-btn-name">New Game</span> to begin!</p>
-        <h5 class="modal-current-standings">Results</h5>
-        <section class="modal-result-container">
-            <div class="modal-results p1-winner">
-              <h6 class="player-one-name-modal modal-results-name">Player 1</h6>
-              <p span class="player-one-score-modal modal-results-score">0</p>
-            </div>
-            <div class="modal-results p2-winner">
-              <h6 class="player-two-name-modal modal-results-name">Player 2</h6>
-              <p class="player-two-score-modal modal-results-score">0</p>
-            </div>
-          </section>
-        <button class="end-game-btn modal-btn">New Game</button>
-      </div>
-    </dialog>
-    
+    <div class="modal-display-area">
+      <h3 class="modal-header">Game Over</h3>
+      <p class="modal-text">Thank you for playing! If you would like to start a new came, click <span
+          class="modal-btn-name">New Game</span> to begin!</p>
+      <h5 class="modal-current-standings">Results</h5>
+      <section class="modal-result-container">
+        <div class="modal-results p1-winner">
+          <h6 class="player-one-name-modal modal-results-name">Player 1</h6>
+          <p span class="player-one-score-modal modal-results-score">0</p>
+        </div>
+        <div class="modal-results p2-winner">
+          <h6 class="player-two-name-modal modal-results-name">Player 2</h6>
+          <p class="player-two-score-modal modal-results-score">0</p>
+        </div>
+      </section>
+      <button class="end-game-btn modal-btn">New Game</button>
+    </div>
+  </dialog>
+
   <div id="player-2" class="player-info">
     <h3 class="player-two-name player-name">Player 2</h3>
     <p><span class="player-two-display-score player-score">0</span></p>
