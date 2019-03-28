@@ -22,7 +22,11 @@ Run `npm start` in your terminal. Go to `http://localhost:8080/` and you should 
 
 ## Screenshots
 
+![first screen shot](https://github.com/jarrettkong/family-feud/blob/master/src/images/screen-shot-1.png)
 
+![second screen shot](https://github.com/jarrettkong/family-feud/blob/master/src/images/screen-shot-2.png)
+
+![third screen shot](https://github.com/jarrettkong/family-feud/blob/master/src/images/screen-shot-3.png)
 
 
 ## Emphasis of the Project
