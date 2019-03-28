@@ -15,6 +15,7 @@ describe('Game', () => {
   beforeEach(function() {
     chai.spy.on(domUpdates, 'displayCurrentQuestion', () => true);
     chai.spy.on(domUpdates, 'startRound', () => true);
+    chai.spy.on(domUpdates, 'switchPlayer', () => true);
   });
 
   afterEach(function() {
@@ -24,7 +25,7 @@ describe('Game', () => {
   it('should be able to instantiate a new game', () => {
     let game = new Game();
     assert.instanceOf(game, Game);
-  })
+  });
 
   it('should start at round 0', () => {
     const game = new Game();
@@ -33,13 +34,13 @@ describe('Game', () => {
 
   it('should start with a currentPlayer value of null', () => {
     const game = new Game();
-    assert.equal(game.currentPlayer, null)
+    assert.equal(game.currentPlayer, null);
   });
 
 
   it('should start with a currentRound value of null', () => {
     const game = new Game();
-    assert.equal(game.currentRound, null)
+    assert.equal(game.currentRound, null);
   });
 
   it('should accept an array of players', () => {
@@ -54,7 +55,7 @@ describe('Game', () => {
     const player1 = new Player('Brennan');
     const player2 = new Player('Jarrett');
     const game = new Game(player1, player2, [1, 2]);
-    game.startNextRound();
+    game.startGame();
     assert.equal(game.currentPlayer, player1);
   });
 
@@ -62,10 +63,10 @@ describe('Game', () => {
     const player1 = new Player('Brennan');
     const player2 = new Player('Jarrett');
     const game = new Game(player1, player2, [1, 2]);
-    game.startNextRound();
+    game.startGame();
     game.startNextRound(); 
     assert.equal(game.currentPlayer, player2);
-  })
+  });
 
   it('should accept an argument of an array', () => {
     const player1 = new Player('Brennan');
@@ -90,12 +91,113 @@ describe('Game', () => {
     const game = new Game(player1, player2, [1, 2]);
     game.startGame();
     assert.equal(game.round, 1);
+  });
+
+  it('should call domUpdates.start round once when game is started', () => {
+    const game = new Game({}, {}, [1, 2]);
+    game.startGame();
+    expect(domUpdates.startRound).to.have.been.called(1);
+  });
+
+  it('should be able to switch players', () => {
+    const player1 = new Player('Brennan');
+    const player2 = new Player('Jarrett');
+    const game = new Game(player1, player2, [1, 2]);
+    game.startGame();
+    assert.equal(game.currentPlayer, player1);
+    game.switchPlayers();
+    assert.equal(game.currentPlayer, player2);
+    expect(domUpdates.switchPlayer).to.have.been.called(1);
+  });
+
+  it('setRoundPlayer should return first player in Players when round is equal to 1', () => {
+    const player1 = new Player('Brennan');
+    const player2 = new Player('Jarrett');
+    let game = new Game(player1, player2, [1, 2]);
+    game.round = 1;
+    const currentPlayer = game.setRoundPlayer();
+    assert.equal(currentPlayer, player1);
+  });
+
+  it('setRoundPlayer should return second player in Players when round is equal to 2', () => {
+    const player1 = new Player();
+    const player2 = new Player();
+    let game = new Game(player1, player2, [1, 2]);
+    game.round = 2;
+    const currentPlayer = game.setRoundPlayer();
+    assert.equal(currentPlayer, player2);
+  });
+
+  it('startNextLightningRound increment the round', () => {
+    const game = new Game({}, {}, [1, 2]);
+    game.startNextLightningRound();
+    assert(game.round, 1);
     expect(domUpdates.startRound).to.have.been.called(1);
   });
 
 
+  it('startNextLightningRound should set current player to player with lowest score for first lightning round', () => {
+    let player1 = new Player();
+    let player2 = new Player();
+    const game = new Game(player1, player2, [1, 2, 3]);
+    game.startGame();
+    game.startNextRound();
+    player1.score = 50;
+    player2.score = 300;
+    game.startNextLightningRound();
+    assert(game.currentPlayer, player2);
+    expect(domUpdates.startRound).to.have.been.called(3);
+  });
 
+  it('setLightningRoundPlayer should return player with lower score', () => {
+    const player1 = new Player();
+    const player2 = new Player();
+    const game = new Game(player1, player2);
+    player1.score = 50;
+    player2.score = -25;
+    const lightningRoundPlayer = game.setLightningRoundPlayer;
+    assert(lightningRoundPlayer, player1);
+  });
 
+  it('setLightningRoundPlayer should return player with lower score', () => {
+    const player1 = new Player();
+    const player2 = new Player();
+    const game = new Game(player1, player2);
+    player1.score = 50;
+    player2.score = 125;
+    const lightningRoundPlayer = game.setLightningRoundPlayer;
+    assert(lightningRoundPlayer, player2);
+  });
+
+  it('should be able to determine the winner', () => {
+    let player1 = new Player();
+    let player2 = new Player();
+    player1.score = 50;
+    player2.score = 51;
+    const game = new Game(player1, player2);
+    let winner = game.getWinner();
+    assert(winner, player2);
+  });
+
+  it('should be able to determine the winner', () => {
+    let player1 = new Player();
+    let player2 = new Player();
+    player1.score = 50;
+    player2.score = 49;
+    const game = new Game(player1, player2);
+    let winner = game.getWinner();
+    assert(winner, player1);
+  });
+
+  it('should be able to determine the winner', () => {
+    let player1 = new Player();
+    let player2 = new Player();
+    player1.score = 50;
+    player2.score = 50;
+    const game = new Game(player1, player2);
+    let winner = game.getWinner();
+    assert(winner, 'Draw');
+  });
 
 
 

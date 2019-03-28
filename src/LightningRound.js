@@ -14,11 +14,11 @@ class LightningRound extends Round {
         this.responses = this.responses.filter(response => {
           return response.answer.toLowerCase() !== guess
         });
+        domUpdates.revealResponse(response.answer);
+        domUpdates.updateScores(player);
         if (this.responses.length === 0) {
           this.isFinished = true;
         }
-        domUpdates.revealResponse(response.answer);
-        domUpdates.updateScores(player);
         break;
       } else if (this.responses.indexOf(response) === this.responses.length - 1) {
         player.updateScore(-20);
