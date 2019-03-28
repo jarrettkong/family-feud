@@ -398,7 +398,8 @@ button {
 }
 
 .active {
-  border: 5px solid rgb(54, 182, 54);
+  border: 5px solid #F5CE17;
+  outline: 2px solid #B3360E;
 }
 
 .winner {
