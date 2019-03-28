@@ -1,6 +1,5 @@
 import chai from 'chai';
 import spies from 'chai-spies';
-import Game from '../src/Game';
 import Round from '../src/Round';
 import Player from '../src/Player';
 import domUpdates from '../src/domUpdates';
@@ -42,7 +41,7 @@ describe('Round', () => {
   it('if guess is correct that response should be filtered from the array', () => {
     let round = new Round({});
     let player = new Player();
-    round.responses = [{answer:'Watch'}];
+    round.responses = [{answer: 'Watch'}];
     round.submitGuess(player, 'watch');
     assert.equal(round.responses.length, 0);
     expect(domUpdates.updateScores).to.have.been.called(2);
@@ -52,7 +51,7 @@ describe('Round', () => {
   it('should change isFinished to true when entire response array is filtered', () => {
     let round = new Round({});
     let player = new Player();
-    round.responses = [{answer:'Watch'}];
+    round.responses = [{answer: 'Watch'}];
     round.submitGuess(player, 'watch');
     assert.equal(round.isFinished, true);
   });

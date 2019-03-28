@@ -1,7 +1,5 @@
 import chai from 'chai';
 import spies from 'chai-spies';
-import Game from '../src/Game';
-import Round from '../src/Round';
 import Player from '../src/Player';
 import domUpdates from '../src/domUpdates';
 import LightningRound from '../src/LightningRound';
@@ -43,7 +41,7 @@ describe('LightningRound', () => {
   it('if guess is correct that response should be filtered from the array', () => {
     let lightningRound = new LightningRound({});
     let player = new Player();
-    lightningRound.responses = [{answer:'Watch'}];
+    lightningRound.responses = [{answer: 'Watch'}];
     lightningRound.submitGuess(player, 'watch');
     assert.equal(lightningRound.responses.length, 0);
   });
@@ -51,7 +49,7 @@ describe('LightningRound', () => {
   it('should change isFinished to true when entire response array is filtered', () => {
     let lightningRound = new LightningRound({});
     let player = new Player();
-    lightningRound.responses = [{answer:'Watch'}];
+    lightningRound.responses = [{answer: 'Watch'}];
     lightningRound.submitGuess(player, 'watch');
     assert.equal(lightningRound.isFinished, true);
     expect(domUpdates.updateScores).to.have.been.called(2);
