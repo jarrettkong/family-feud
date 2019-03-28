@@ -4,7 +4,6 @@ import Game from '../src/Game';
 import Round from '../src/Round';
 import Player from '../src/Player';
 import domUpdates from '../src/domUpdates';
-import data from '../src/data';
 
 const assert = chai.assert;
 const expect = chai.expect;
