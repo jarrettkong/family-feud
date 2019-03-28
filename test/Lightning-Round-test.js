@@ -9,6 +9,8 @@ import LightningRound from '../src/LightningRound';
 
 chai.use(spies);
 const assert = chai.assert;
+const expect = chai.expect;
+
 
 describe('LightningRound', () => {
 
@@ -52,5 +54,7 @@ describe('LightningRound', () => {
     lightningRound.responses = [{answer:'Watch'}];
     lightningRound.submitGuess(player, 'watch');
     assert.equal(lightningRound.isFinished, true);
+    expect(domUpdates.updateScores).to.have.been.called(2);
+    expect(domUpdates.revealResponse).to.have.been.called(1);
   });
 });

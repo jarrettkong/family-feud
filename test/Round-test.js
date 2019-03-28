@@ -8,6 +8,8 @@ import domUpdates from '../src/domUpdates';
 
 chai.use(spies);
 const assert = chai.assert;
+const expect = chai.expect;
+
 
 describe('Round', () => {
 
@@ -43,6 +45,8 @@ describe('Round', () => {
     round.responses = [{answer:'Watch'}];
     round.submitGuess(player, 'watch');
     assert.equal(round.responses.length, 0);
+    expect(domUpdates.updateScores).to.have.been.called(2);
+    expect(domUpdates.revealResponse).to.have.been.called(1);
   });
 
   it('should change isFinished to true when entire response array is filtered', () => {

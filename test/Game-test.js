@@ -43,24 +43,24 @@ describe('Game', () => {
   });
 
   it('should accept an array of players', () => {
-    const player1 = new Player('Jarrett', 1);
-    const player2 = new Player('Brennan', 2);
+    const player1 = new Player('Jarrett');
+    const player2 = new Player('Brennan');
     const game = new Game(player1, player2);
     assert.equal(game.players[0].name, 'Jarrett');
     assert.equal(game.players[1].name, 'Brennan');
   }); 
 
   it('should set currentPlayer to first player on round 1', () => {
-    const player1 = new Player('Brennan');
-    const player2 = new Player('Jarrett');
+    const player1 = new Player();
+    const player2 = new Player();
     const game = new Game(player1, player2, [1, 2]);
     game.startGame();
     assert.equal(game.currentPlayer, player1);
   });
 
   it('should set currentPlayer to second player on round 2', () => {
-    const player1 = new Player('Brennan');
-    const player2 = new Player('Jarrett');
+    const player1 = new Player();
+    const player2 = new Player();
     const game = new Game(player1, player2, [1, 2]);
     game.startGame();
     game.startNextRound(); 
@@ -68,16 +68,16 @@ describe('Game', () => {
   });
 
   it('should accept an argument of an array', () => {
-    const player1 = new Player('Brennan');
-    const player2 = new Player('Jarrett');
+    const player1 = new Player();
+    const player2 = new Player();
     const game = new Game(player1, player2, [1, 2, 3]);
     assert.deepEqual(game.surveys, [1, 2, 3]);
   });
 
 
   it('should be able to shuffle surveys', () => {
-    const player1 = new Player('Brennan');
-    const player2 = new Player('Jarrett');
+    const player1 = new Player();
+    const player2 = new Player();
     let game = new Game(player1, player2);
     let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     game.shuffle(array);
@@ -85,8 +85,8 @@ describe('Game', () => {
   });
 
   it('should start increment round upon initiation of game', () => {
-    const player1 = new Player('Brennan');
-    const player2 = new Player('Jarrett');
+    const player1 = new Player();
+    const player2 = new Player();
     const game = new Game(player1, player2, [1, 2]);
     game.startGame();
     assert.equal(game.round, 1);
@@ -99,8 +99,8 @@ describe('Game', () => {
   });
 
   it('should be able to switch players', () => {
-    const player1 = new Player('Brennan');
-    const player2 = new Player('Jarrett');
+    const player1 = new Player();
+    const player2 = new Player();
     const game = new Game(player1, player2, [1, 2]);
     game.startGame();
     assert.equal(game.currentPlayer, player1);
@@ -110,8 +110,8 @@ describe('Game', () => {
   });
 
   it('setRoundPlayer should return first player in Players when round is equal to 1', () => {
-    const player1 = new Player('Brennan');
-    const player2 = new Player('Jarrett');
+    const player1 = new Player();
+    const player2 = new Player();
     let game = new Game(player1, player2, [1, 2]);
     game.round = 1;
     const currentPlayer = game.setRoundPlayer();
